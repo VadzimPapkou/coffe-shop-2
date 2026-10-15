@@ -202,3 +202,29 @@ body {
   z-index: 0;
   pointer-events: none;
 }
+
+/* Hero lazy-susan carousel — mirrors apocalypsecoffee.com */
+.susan {
+  --bag-w: clamp(112px, 33vw, 140px);
+  --susan-x: 0.65;
+  --susan-drop: 2px;
+  --arrow: 40px;
+}
+
+@media (min-width: 768px) {
+  .susan {
+    --bag-w: clamp(180px, 28vw, 270px);
+    --susan-x: 0.75;
+    --susan-drop: 3px;
+    --arrow: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .susan {
+    --bag-w: clamp(180px, 22vw, 300px);
+    --susan-x: 0.55;
+    --susan-drop: 5px;
+    --arrow: 48px;
+  }
+}

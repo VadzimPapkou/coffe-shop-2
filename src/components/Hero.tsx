@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { useState, type CSSProperties } from "react";
 import { WobbleButton } from "./WobbleButton";
 import { TornEdge } from "./TornEdge";
+import { SusanStage, type SusanItem } from "./SusanStage";
 
-const ROASTS = [
+const ROASTS: SusanItem[] = [
   {
     id: "antidote",
     name: "The Antidote",
@@ -55,15 +54,6 @@ const CHIPS = [
 ];
 
 export function Hero() {
-  const [index, setIndex] = useState(0);
-  const n = ROASTS.length;
-  const prev = () => setIndex((i) => (i - 1 + n) % n);
-  const next = () => setIndex((i) => (i + 1) % n);
-
-  const left = ROASTS[(index - 1 + n) % n];
-  const center = ROASTS[index];
-  const right = ROASTS[(index + 1) % n];
-
   return (
     <section className="hero relative overflow-hidden bg-cream pb-[72px] pt-20 sm:pb-[88px] sm:pt-24">
       {/* soft diagonal orange sweep */}
@@ -107,76 +97,10 @@ export function Hero() {
 
           <div className="flex flex-wrap items-center gap-5">
             <WobbleButton href="#shop">Shop Coffee</WobbleButton>
-            <a
-              href="#cafes"
-              className="font-body text-[15px] font-semibold uppercase tracking-[0.04em] text-ink underline decoration-2 underline-offset-4"
-            >
-              Visit Our Cafes →
-            </a>
           </div>
         </div>
 
-        {/* Roast stage */}
-        <div className="relative z-10 mx-auto w-full max-w-[640px] select-none lg:max-w-none">
-          <div className="relative flex h-[340px] items-end justify-center sm:h-[420px] lg:h-[520px]">
-            <button
-              type="button"
-              aria-label="Previous roast"
-              onClick={prev}
-              className="absolute left-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border-2 border-ink/20 bg-cream/80 text-ink backdrop-blur-sm transition hover:border-ink"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              aria-label="Next roast"
-              onClick={next}
-              className="absolute right-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border-2 border-ink/20 bg-cream/80 text-ink backdrop-blur-sm transition hover:border-ink"
-            >
-              ›
-            </button>
-
-            <Image
-              src={left.img}
-              alt={left.name}
-              width={200}
-              height={380}
-              className="absolute bottom-6 left-[8%] w-[28%] max-w-[180px] scale-90 opacity-55 brightness-[0.85] transition-all duration-500"
-            />
-            <Image
-              src={center.img}
-              alt={center.name}
-              width={320}
-              height={600}
-              priority
-              className="relative z-10 w-[46%] max-w-[280px] drop-shadow-[0_28px_40px_rgba(0,0,0,0.35)] transition-all duration-500"
-            />
-            <Image
-              src={right.img}
-              alt={right.name}
-              width={200}
-              height={380}
-              className="absolute bottom-6 right-[8%] w-[28%] max-w-[180px] scale-90 opacity-55 brightness-[0.85] transition-all duration-500"
-            />
-          </div>
-
-          <div className="mt-2 flex flex-col items-center gap-1 text-center">
-            <div className="flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink font-display text-sm text-cream">
-                #{center.rank}
-              </span>
-              <h2 className="font-display text-[clamp(28px,3vw,40px)] leading-none text-ink">
-                {center.name}
-              </h2>
-            </div>
-            <div className="font-mono flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[12px] text-paper-mut sm:text-[13px]">
-              <span>{center.meta}</span>
-              <a href="#shop" className="font-semibold uppercase text-ink underline underline-offset-2">
-                {center.price} →
-              </a>
-            </div>
-          </div>
-        </div>
+        <SusanStage items={ROASTS} />
       </div>
 
       <TornEdge fill="#141414" position="bottom" />
