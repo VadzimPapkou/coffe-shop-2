@@ -1,39 +1,39 @@
 import type { Metadata } from "next";
 import {
-  Archivo,
-  Bebas_Neue,
-  DM_Mono,
-  Permanent_Marker,
+  Commissioner,
+  JetBrains_Mono,
+  Neucha,
+  Oswald,
 } from "next/font/google";
 import "./globals.css";
 
-const display = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
+const display = Oswald({
+  weight: ["500", "600", "700"],
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
   variable: "--font-display",
 });
 
-const script = Permanent_Marker({
+const script = Neucha({
   weight: "400",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   variable: "--font-script",
 });
 
-const body = Archivo({
-  subsets: ["latin"],
+const body = Commissioner({
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
   variable: "--font-body",
 });
 
-const mono = DM_Mono({
+const mono = JetBrains_Mono({
   weight: ["400", "500"],
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic", "cyrillic-ext"],
   variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Buy Organic Coffee Beans Online | Apocalypse Coffee Roasters",
+  title: "Кварта — свежая обжарка кофе в Минске",
   description:
-    "Certified Organic Small-batch Roasted in Melbourne, FL. It's the end… of bad coffee.",
+    "Маленькая обжарка на Короля, 9. Партии по 5 кг, зерно к вам на 1–3 день после обжарки. Подписка и разовый заказ.",
 };
 
 export default function RootLayout({
@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ru"
       className={`${display.variable} ${script.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">{children}</body>

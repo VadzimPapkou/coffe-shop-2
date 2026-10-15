@@ -1,37 +1,37 @@
 const REVIEWS = [
   {
-    text: "I found Apocalypse Coffee Roasters by accident driving down US1. Best accident ever. I have enjoyed all the flavors I have bought there, right now Armageddon is my #1. I love being able to have the coffee delivered, but the shop is so much fun, I just go there for the enjoyment.",
-    author: "Sharon D.",
+    text: "Заказала Эфиопию — правда цветочная, как писали. Привезли в пятницу, зерно ещё тёплое от обжарки. Теперь на подписке.",
+    author: "Катя М.",
   },
   {
-    text: "I am a huge fan of what these guys are doing. The quality of their beans is consistently outstanding and the freshness is unbeatable. I've explored their full variety, and although I've enjoyed every single one, The Bomb, The Armageddon and The Antidote really stand out.",
-    author: "Ivan R.",
+    text: "Брали Бразилию под эспрессо в офис. Нормальный вкус, без горечи. Дмитрий перезвонил сам и подсказал помол.",
+    author: "Игорь Р.",
   },
   {
-    text: "Absolutely love this coffee. Can't start my mornings correctly without it.",
-    author: "Cori S.",
+    text: "Самовывоз на Короля — быстро. Дрип-пакеты удобно в дорогу, ассорти нормальное.",
+    author: "Оля С.",
   },
   {
-    text: "Picked up this coffee and I don't think I'll ever go back to your granddad's coffee. This is the stuff you've been searching for your entire life.",
-    author: "Frank A.",
+    text: "Колумбия Уила стала домашним кофе. Карамель чувствуется, яблоко тоже. Не «премиум», просто вкусно.",
+    author: "Андрей К.",
   },
   {
-    text: "I visit this coffee shop when I visit my sister in Florida and I love it so much that I buy their beans and get it shipped to PA!",
-    author: "Kaylee S.R.",
+    text: "Подписка раз в месяц — две пачки, доставка бесплатно. Не надо каждый раз думать, что заказать.",
+    author: "Маша Л.",
   },
   {
-    text: "This is the best coffee I have ever had. I first tried it on vacation in January, brought some home and have ordered it through the mail twice since returning home.",
-    author: "Barbara M.",
+    text: "Обжаривают по четвергам — это чувствуется. После магазинного зерна разница заметная.",
+    author: "Сергей В.",
   },
   {
-    text: "Don't know how but my wife found Apocalypse Coffee and got me a bunch for Xmas. I loved it and now I buy it as my regular coffee. It's hard to find good organic coffee and Apocalypse is great coffee that also happens to be organic.",
-    author: "Matt B.",
+    text: "Пришли с рекламы в Инсте, оставили заявку — перезвонили в тот же день. Без лишнего пафоса, всё по делу.",
+    author: "Настя Б.",
   },
 ];
 
 function Stars() {
   return (
-    <div className="mb-4 flex gap-1 text-ac" role="img" aria-label="5 out of 5 stars">
+    <div className="mb-4 flex gap-1 text-ac" role="img" aria-label="5 из 5 звёзд">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} width="18" height="18" viewBox="0 0 24 24" aria-hidden>
           <path
@@ -68,9 +68,9 @@ export function Reviews() {
   return (
     <section className="rvm relative bg-d1 pb-16 pt-10 text-cream sm:pb-20 sm:pt-14">
       <div className="mb-8 px-5 text-center sm:mb-10 sm:px-8">
-        <div className="section-label mb-3 justify-center">Reviews</div>
+        <div className="section-label mb-3 justify-center">Отзывы</div>
         <h2 className="section-title text-[clamp(36px,4.5vw,64px)] leading-none">
-          Tasted and Approved
+          Что говорят
         </h2>
       </div>
 
@@ -83,8 +83,8 @@ export function Reviews() {
       </div>
 
       <p className="font-display mt-10 px-5 text-center text-[clamp(18px,2.2vw,28px)] tracking-[0.04em] text-cream">
-        And plenty of others{" "}
-        <span className="scribble-underline">say the same thing</span>
+        И ещё многие{" "}
+        <span className="scribble-underline">пишут похожее</span>
       </p>
     </section>
   );

@@ -337,7 +337,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
         data-susan-stage=""
         role="region"
         aria-roledescription="carousel"
-        aria-label="Best-selling roasts"
+        aria-label="Ассортимент"
         tabIndex={0}
       >
         {items.map((item, i) => (
@@ -371,7 +371,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
 
         <button
           type="button"
-          aria-label="Previous roast"
+          aria-label="Предыдущий"
           data-susan-prev=""
           onClick={() => spin(-1)}
           className="absolute left-0 z-[1100] grid h-[var(--arrow)] w-[var(--arrow)] place-items-center rounded-lg bg-[#ddd7cc] text-ink transition-[background,transform] duration-[180ms] hover:bg-[#d2cbbe] active:scale-95"
@@ -391,7 +391,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
         </button>
         <button
           type="button"
-          aria-label="Next roast"
+          aria-label="Следующий"
           data-susan-next=""
           onClick={() => spin(1)}
           className="absolute right-0 z-[1100] grid h-[var(--arrow)] w-[var(--arrow)] place-items-center rounded-lg bg-[#ddd7cc] text-ink transition-[background,transform] duration-[180ms] hover:bg-[#d2cbbe] active:scale-95"
@@ -419,7 +419,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
         <div className="flex max-w-full items-center justify-center gap-2.5">
           <span
             className="grid h-8 min-w-8 shrink-0 place-items-center rounded-full bg-ink px-2 font-mono text-[13px] font-medium text-cream"
-            aria-label={`Number ${active.rank} best seller`}
+            aria-label={`Позиция ${active.rank}`}
           >
             #{active.rank}
           </span>

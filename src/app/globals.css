@@ -55,19 +55,21 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-display), "Bebas Neue", sans-serif;
+  font-family: var(--font-display), Oswald, sans-serif;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .font-script {
-  font-family: var(--font-script), "Permanent Marker", cursive;
+  font-family: var(--font-script), Neucha, cursive;
+  font-weight: 400;
   text-transform: none;
   letter-spacing: -0.01em;
 }
 
 .font-mono {
-  font-family: var(--font-mono), "DM Mono", ui-monospace, monospace;
+  font-family: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
 }
 
 .section-label {
@@ -97,8 +99,8 @@ body {
 }
 
 .section-title {
-  font-family: var(--font-display), "Bebas Neue", sans-serif;
-  font-weight: 400;
+  font-family: var(--font-display), Oswald, sans-serif;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--cream);

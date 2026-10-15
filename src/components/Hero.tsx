@@ -6,51 +6,51 @@ import { SusanStage, type SusanItem } from "./SusanStage";
 
 const ROASTS: SusanItem[] = [
   {
-    id: "antidote",
-    name: "The Antidote",
+    id: "ethiopia",
+    name: "Эфиопия Иргачеффе",
     rank: 1,
-    meta: "Med / Dark · Robust · Caramel · Chocolate",
+    meta: "Цветочный · Бергамот · Светлая · 250 г",
     img: "/assets/antidote.png",
-    price: "From $12",
+    price: "32 BYN",
   },
   {
-    id: "armageddon",
-    name: "Armageddon",
+    id: "colombia",
+    name: "Колумбия Уила",
     rank: 2,
-    meta: "Medium · Rich · Robust · Dark Chocolate",
+    meta: "Карамель · Красное яблоко · 250 г",
     img: "/assets/armageddon.png",
-    price: "From $12",
+    price: "29 BYN",
   },
   {
-    id: "uprising",
-    name: "The Uprising",
+    id: "brazil",
+    name: "Бразилия Серрадо",
     rank: 3,
-    meta: "Medium · Bold · Bright · Citrus",
+    meta: "Орех · Шоколад · Под эспрессо · 250 г",
     img: "/assets/the-uprising.png",
-    price: "From $12",
+    price: "26 BYN",
   },
   {
-    id: "wanderer",
-    name: "The Wanderer",
+    id: "drips",
+    name: "Дрип-пакеты",
     rank: 4,
-    meta: "Light · Floral · Honey · Tea-like",
+    meta: "Ассорти · 10 штук",
     img: "/assets/the-wanderer.png",
-    price: "From $12",
+    price: "18 BYN",
   },
   {
-    id: "antimatter",
-    name: "Anti-Matter",
+    id: "subscription",
+    name: "Подписка",
     rank: 5,
-    meta: "Dark · Smooth · Dark Choc. · Vanilla",
+    meta: "2 × 250 г в месяц · Доставка бесплатно",
     img: "/assets/anti-matter.png",
-    price: "From $12",
+    price: "54 BYN / мес",
   },
 ];
 
 const CHIPS = [
-  { label: "Certified Organic", dot: "bg-green" },
-  { label: "Small-batch", dot: "bg-ac" },
-  { label: "Roasted in Melbourne, FL", dot: "bg-ink" },
+  { label: "Партии по 5 кг", dot: "bg-green" },
+  { label: "С 2019", dot: "bg-ac" },
+  { label: "Минск, Короля 9", dot: "bg-ink" },
 ];
 
 export function Hero() {
@@ -81,22 +81,21 @@ export function Hero() {
             ))}
           </div>
 
-          <h1 className="font-display mb-5 text-[clamp(52px,8vw,95px)] leading-[0.92] text-ink">
+          <h1 className="font-display mb-5 text-[clamp(52px,8vw,64px)] leading-[0.92] text-ink">
             <span className="font-script block text-[clamp(42px,6.5vw,78px)] leading-[0.95] text-ac">
-              It&apos;s the end…
+              Свежая обжарка
             </span>
-            <span>of bad coffee.</span>
+            <span>из Минска</span>
           </h1>
 
           <p className="font-mono mb-8 max-w-[540px] text-[15px] leading-[1.65] text-paper-mut sm:text-base">
-            Roasted for the ones who don&apos;t follow the herd. We&apos;re putting an end
-            to burnt corporate coffee and pretentious coffee culture, with organic,
-            small-batch coffee roasted with precision, without the ego, the jargon, or
-            the cover-up. It&apos;s time to wake up to something better.
+            «Кварта» — маленькая мастерская Ани и Дмитрия. Обжариваем по четвергам
+            партиями по 5 кг, по пятницам развозим по Минску. Зерно приходит к вам
+            на 1–3 день после обжарки — свежесть и есть то, что мы продаём.
           </p>
 
           <div className="flex flex-wrap items-center gap-5">
-            <WobbleButton href="#shop">Shop Coffee</WobbleButton>
+            <WobbleButton href="#contact">Оставить заявку</WobbleButton>
           </div>
         </div>
 

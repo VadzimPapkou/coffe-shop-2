@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { WobbleButton } from "./WobbleButton";
 
 export function Header() {
@@ -8,20 +7,15 @@ export function Header() {
         <a
           href="#"
           className="pointer-events-auto absolute left-1/2 top-3 -translate-x-1/2 sm:top-4"
-          aria-label="Apocalypse Coffee Roasters"
+          aria-label="Кварта"
         >
-          <Image
-            src="/assets/logo.svg"
-            alt="Apocalypse Coffee Roasters"
-            width={72}
-            height={72}
-            className="h-14 w-14 sm:h-[72px] sm:w-[72px]"
-            priority
-          />
+          <span className="font-display text-[28px] tracking-[0.04em] text-ink sm:text-[34px]">
+            Кварта
+          </span>
         </a>
 
         <WobbleButton href="#contact" className="pointer-events-auto site-header-cta">
-          Contact
+          Заявка
         </WobbleButton>
       </div>
     </header>
