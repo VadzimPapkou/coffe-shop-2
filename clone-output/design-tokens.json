@@ -1,0 +1,19 @@
+{
+  "colors": {
+    "cream": "#f0ede8",
+    "black": "#090705",
+    "d0": "#0d0d0d",
+    "d1": "#141414",
+    "ac": "#e06d2d",
+    "ink": "#1a1a1a",
+    "green": "#30a050",
+    "blue": "#3aaae0",
+    "paperMut": "#5c574e"
+  },
+  "fonts": {
+    "display": "Arnel, Bebas Neue, sans-serif",
+    "script": "Lovely Mess, Permanent Marker, cursive",
+    "body": "Akzidenz Grotesk BE, Archivo, DM Sans, sans-serif",
+    "mono": "DM Mono, ui-monospace, monospace"
+  }
+}

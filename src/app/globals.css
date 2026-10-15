@@ -1,26 +1,185 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f0ede8;
+  --black: #090705;
+  --d0: #0d0d0d;
+  --d1: #141414;
+  --ac: #e06d2d;
+  --ink: #1a1a1a;
+  --green: #30a050;
+  --blue: #3aaae0;
+  --paper-mut: #5c574e;
+  --paper-soft: #9a948a;
+  --purple: #6a4d9c;
+  --pink: #e62a8a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-black: var(--black);
+  --color-d0: var(--d0);
+  --color-d1: var(--d1);
+  --color-ac: var(--ac);
+  --color-ink: var(--ink);
+  --color-green: var(--green);
+  --color-blue: var(--blue);
+  --color-paper-mut: var(--paper-mut);
+  --font-display: var(--font-display);
+  --font-script: var(--font-script);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  margin: 0;
+}
+
+.hard-shadow {
+  box-shadow: 4px 4px 0 #000;
+}
+
+.hard-shadow-sm {
+  box-shadow: 3px 3px 0 #000;
+}
+
+.font-display {
+  font-family: var(--font-display), "Bebas Neue", sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.font-script {
+  font-family: var(--font-script), "Permanent Marker", cursive;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.font-mono {
+  font-family: var(--font-mono), "DM Mono", ui-monospace, monospace;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: inherit;
+  gap: 8px;
+  color: var(--ac);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-label.justify-center {
+  justify-content: center;
+  width: 100%;
+}
+
+.section-label::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ac);
+}
+
+.section-title {
+  font-family: var(--font-display), "Bebas Neue", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 0;
+}
+
+/* Reviews marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.reviews-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marquee 55s linear infinite;
+}
+
+.reviews-track:hover {
+  animation-play-state: paused;
+}
+
+/* Bean float */
+@keyframes float-bean {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--rot, 0deg));
+  }
+}
+
+.bean {
+  animation: float-bean 5s ease-in-out infinite;
+}
+
+.bean:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.bean:nth-child(3) {
+  animation-delay: 1.2s;
+}
+.bean:nth-child(4) {
+  animation-delay: 1.8s;
+}
+
+/* Orange underline scribble */
+.scribble-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.scribble-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 10px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M0 8 Q20 2 40 7 T80 6 T120 8 T160 5 T200 7' fill='none' stroke='%23e06d2d' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+}
+
+/* Torn edge */
+.torn-edge {
+  display: block;
+  width: 100%;
+  height: clamp(48px, 6vw, 88px);
+  line-height: 0;
+}
+
+.pill-shape {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  z-index: 0;
+  pointer-events: none;
 }

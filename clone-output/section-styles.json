@@ -1,0 +1,38 @@
+{
+  "header": {
+    "tokens": {
+      "backgrounds": ["transparent"],
+      "accents": ["#e06d2d", "#f0ede8"],
+      "shadows": ["3px 3px 0 #000"],
+      "borderRadii": ["14px"]
+    }
+  },
+  "section.hero": {
+    "heading": "It's the end… of bad coffee.",
+    "tokens": {
+      "backgrounds": ["#f0ede8", "rgba(224,109,45,0.35)"],
+      "colors": ["#1a1a1a", "#e06d2d", "#5c574e"],
+      "fontFamilies": ["Permanent Marker", "Bebas Neue", "DM Mono", "Archivo"],
+      "fontSizes": ["11px", "16px", "95px"],
+      "layout": { "display": "grid", "gridTemplateColumns": "1fr 1fr" }
+    }
+  },
+  "section.reviews": {
+    "heading": "Tasted and Approved",
+    "label": "Reviews",
+    "tokens": {
+      "backgrounds": ["#141414", "#f0ede8"],
+      "colors": ["#f0ede8", "#e06d2d", "#1a1a1a"],
+      "borderRadii": ["28px"]
+    }
+  },
+  "section.why-apocalypse": {
+    "heading": "What Sets Us Apart",
+    "label": "Why Apocalypse",
+    "tokens": {
+      "backgrounds": ["#0d0d0d"],
+      "colors": ["#f0ede8", "rgba(240,237,232,0.5)", "#e06d2d"],
+      "layout": { "display": "grid", "gridTemplateColumns": "repeat(3, 1fr)", "gap": "20px" }
+    }
+  }
+}
