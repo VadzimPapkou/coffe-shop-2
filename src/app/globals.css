@@ -168,12 +168,31 @@ body {
     center / 100% 100% no-repeat;
 }
 
-/* Torn edge */
+/* Torn edge — from apocalypsecoffee.com */
 .torn-edge {
+  position: absolute;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: 104px;
+  z-index: 4;
   display: block;
-  width: 100%;
-  height: clamp(48px, 6vw, 88px);
+  pointer-events: none;
+  overflow: visible;
   line-height: 0;
+}
+
+.torn-edge--bottom {
+  bottom: -1px;
+}
+
+.torn-edge--top {
+  top: -1px;
+}
+
+@media (max-width: 767px) {
+  .torn-edge {
+    height: 56px;
+  }
 }
 
 .pill-shape {
