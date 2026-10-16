@@ -17,6 +17,7 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 400px;
   --color-cream: var(--cream);
   --color-black: var(--black);
   --color-d0: var(--d0);
@@ -39,6 +40,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {

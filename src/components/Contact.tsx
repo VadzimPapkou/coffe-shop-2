@@ -98,7 +98,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative bg-[#000] pb-24 pt-24 text-cream sm:pb-32 sm:pt-28"
+      className="relative bg-[#000] pb-0 pt-24 text-cream xs:pb-32 sm:pt-28"
     >
       <TornEdge fill="#0d0d0d" position="top" />
 
@@ -141,7 +141,7 @@ export function Contact() {
         <aside className="relative mx-auto w-full max-w-[520px] lg:mx-0 lg:max-w-none lg:justify-self-end">
           <form
             onSubmit={onSubmit}
-            className="relative overflow-hidden rounded-[36px] bg-cream px-7 py-9 text-ink sm:px-10 sm:py-11"
+            className="relative -mx-5 overflow-hidden rounded-none bg-cream px-7 py-9 text-ink xs:mx-0 xs:rounded-[36px] sm:px-10 sm:py-11"
           >
             <div className="flex flex-col gap-5">
               <label className="flex flex-col gap-2">

@@ -1,112 +1,114 @@
-.wobble-button {
-  --wobble-button-color: #f0ede8;
-  --wobble-button-color-background: var(--ac);
-  --wobble-button-color-focus: var(--ac);
-  --wobble-button-padding: 0.95em 1.6em;
-  user-select: none;
-  color: var(--wobble-button-color);
-  background: transparent;
-  outline: none;
-  border: none;
-  padding: 0;
-  line-height: 1;
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-grid;
-  position: relative;
-  cursor: pointer;
-  min-height: 62px;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.wobble-button::after {
-  content: "";
-  display: block;
-  position: absolute;
-  inset: -0.125em;
-  border-radius: 0.5em;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.wobble-button:focus-visible::after {
-  box-shadow: 0 0 0 0.125em var(--wobble-button-color-focus);
-}
-
-.wobble-button__bg {
-  width: 100%;
-  height: 100%;
-  color: var(--wobble-button-color-background);
-  grid-area: 1 / 1;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.wobble-button__bg-svg {
-  width: 300%;
-  max-width: none;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.wobble-button__inner {
-  gap: 0.125em;
-  width: 100%;
-  height: 100%;
-  padding: var(--wobble-button-padding);
-  z-index: 1;
-  grid-area: 1 / 1;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.wobble-button__text {
-  display: inline-block;
-}
-
-.wobble-button.has-shadow {
-  filter: drop-shadow(rgb(26, 26, 26) 7px 7px 0px);
-}
-
-@keyframes wobble-button-sprite {
-  100% {
-    transform: translateX(-100%);
+@layer components {
+  .wobble-button {
+    --wobble-button-color: #f0ede8;
+    --wobble-button-color-background: var(--ac);
+    --wobble-button-color-focus: var(--ac);
+    --wobble-button-padding: 0.95em 1.6em;
+    user-select: none;
+    color: var(--wobble-button-color);
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-grid;
+    position: relative;
+    cursor: pointer;
+    min-height: 62px;
+    -webkit-tap-highlight-color: transparent;
   }
-}
 
-@keyframes wobble-button-wiggle {
-  0%,
-  100% {
-    transform: translateY(0);
+  .wobble-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: -0.125em;
+    border-radius: 0.5em;
+    pointer-events: none;
+    z-index: 1;
   }
-  50% {
-    transform: translateY(-1px);
-  }
-}
 
-@media (hover: hover) and (pointer: fine) {
-  @media (prefers-reduced-motion: no-preference) {
-    .wobble-button:hover .wobble-button__bg,
-    .wobble-button:focus-visible .wobble-button__bg {
-      transform: scale(1.035) rotate(-1deg);
+  .wobble-button:focus-visible::after {
+    box-shadow: 0 0 0 0.125em var(--wobble-button-color-focus);
+  }
+
+  .wobble-button__bg {
+    width: 100%;
+    height: 100%;
+    color: var(--wobble-button-color-background);
+    grid-area: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .wobble-button__bg-svg {
+    width: 300%;
+    max-width: none;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .wobble-button__inner {
+    gap: 0.125em;
+    width: 100%;
+    height: 100%;
+    padding: var(--wobble-button-padding);
+    z-index: 1;
+    grid-area: 1 / 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .wobble-button__text {
+    display: inline-block;
+  }
+
+  .wobble-button.has-shadow {
+    filter: drop-shadow(rgb(26, 26, 26) 7px 7px 0px);
+  }
+
+  @keyframes wobble-button-sprite {
+    100% {
+      transform: translateX(-100%);
     }
+  }
 
-    .wobble-button:hover .wobble-button__bg-svg,
-    .wobble-button:focus-visible .wobble-button__bg-svg {
-      animation: wobble-button-sprite 0.45s steps(3) infinite;
+  @keyframes wobble-button-wiggle {
+    0%,
+    100% {
+      transform: translateY(0);
     }
+    50% {
+      transform: translateY(-1px);
+    }
+  }
 
-    .wobble-button:hover .wobble-button__text,
-    .wobble-button:focus-visible .wobble-button__text {
-      animation: wobble-button-wiggle 0.3s steps(2) infinite;
+  @media (hover: hover) and (pointer: fine) {
+    @media (prefers-reduced-motion: no-preference) {
+      .wobble-button:hover .wobble-button__bg,
+      .wobble-button:focus-visible .wobble-button__bg {
+        transform: scale(1.035) rotate(-1deg);
+      }
+
+      .wobble-button:hover .wobble-button__bg-svg,
+      .wobble-button:focus-visible .wobble-button__bg-svg {
+        animation: wobble-button-sprite 0.45s steps(3) infinite;
+      }
+
+      .wobble-button:hover .wobble-button__text,
+      .wobble-button:focus-visible .wobble-button__text {
+        animation: wobble-button-wiggle 0.3s steps(2) infinite;
+      }
     }
   }
 }

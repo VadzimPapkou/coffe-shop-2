@@ -442,7 +442,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
 
       <div
         ref={capRef}
-        className="mt-2.5 flex flex-col items-center px-10 text-center"
+        className="mt-2.5 flex flex-col items-center text-center sm:px-10"
         data-susan-cap=""
       >
         <div className="flex max-w-full items-center justify-center gap-2.5">
