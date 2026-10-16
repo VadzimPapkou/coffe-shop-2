@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { name, phone, comment, page, utm } = parsed.data;
+  const { name, phone, interest, comment, page, utm } = parsed.data;
 
   if (isDuplicateLead(phone)) {
     return NextResponse.json({ ok: true, duplicate: true }, { status: 200 });
@@ -60,6 +60,7 @@ export async function POST(request: Request) {
     "",
     `Имя: ${name}`,
     `Телефон: ${phone}`,
+    `Интерес: ${interest}`,
     comment ? `Комментарий: ${comment}` : null,
     "",
     `Страница: ${page || "—"}`,

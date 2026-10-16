@@ -19,6 +19,12 @@ const utmSchema = z
   .optional()
   .transform((value) => value ?? {});
 
+const INTEREST_LABELS = {
+  subscription: "Подписка",
+  order: "Разовый заказ",
+  question: "Вопрос",
+} as const;
+
 export const leadSchema = z.object({
   name: z
     .string()
@@ -26,6 +32,11 @@ export const leadSchema = z.object({
     .min(1, "Укажите имя")
     .max(80, "Слишком длинное имя"),
   phone: byPhone,
+  interest: z
+    .enum(["subscription", "order", "question"], {
+      error: "Выберите, что интересует",
+    })
+    .transform((value) => INTEREST_LABELS[value]),
   comment: z
     .string()
     .trim()

@@ -5,6 +5,12 @@ import { TornEdge } from "./TornEdge";
 import { FlatButton } from "./FlatButton";
 import { BY_PHONE_HINT, isByPhone } from "@/lib/phone";
 
+const INTERESTS = [
+  { value: "subscription", label: "Подписка" },
+  { value: "order", label: "Разовый заказ" },
+  { value: "question", label: "Вопрос" },
+] as const;
+
 const CONTACTS = [
   {
     label: "Адрес",
@@ -77,6 +83,7 @@ export function Contact() {
         body: JSON.stringify({
           name: data.get("name"),
           phone: data.get("phone"),
+          interest: data.get("interest"),
           comment: data.get("comment"),
           page: window.location.href,
           utm: readUtm(),
@@ -174,6 +181,24 @@ export function Contact() {
                   onInput={(e) => syncPhoneValidity(e.currentTarget)}
                   onBlur={(e) => syncPhoneValidity(e.currentTarget)}
                 />
+              </label>
+
+              <label className="flex flex-col gap-2">
+                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-paper-mut">
+                  Что интересует
+                </span>
+                <select
+                  name="interest"
+                  required
+                  defaultValue="subscription"
+                  className={`${fieldClass} appearance-none bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22%3E%3Cpath d=%22M1 1.5L6 6.5L11 1.5%22 fill=%22none%22 stroke=%22%231a1a1a%22 stroke-width=%221.6%22 stroke-linecap=%22round%22/%3E%3C/svg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat pr-10`}
+                >
+                  {INTERESTS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
               </label>
 
               <label className="flex flex-col gap-2">
