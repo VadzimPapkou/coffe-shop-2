@@ -10,9 +10,9 @@ export function Subscription() {
   return (
     <section
       id="subscription"
-      className="relative bg-[#000] pb-20 pt-24 text-cream sm:pb-28 sm:pt-28"
+      className="relative bg-[#141210] pb-20 pt-24 text-cream sm:pb-28 sm:pt-28"
     >
-      <TornEdge fill="#0d0d0d" position="top" />
+      <TornEdge fill="#1c1916" position="top" />
 
       <div className="mx-auto grid max-w-[1100px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>

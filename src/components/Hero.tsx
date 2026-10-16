@@ -84,7 +84,7 @@ export function Hero() {
         <SusanStage items={ROASTS} />
       </div>
 
-      <TornEdge fill="#141414" position="bottom" />
+      <TornEdge fill="#1c1916" position="bottom" />
     </section>
   );
 }

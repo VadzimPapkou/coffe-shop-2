@@ -1,14 +1,27 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 import "./wobble-button.css";
 
-type WobbleButtonProps = {
-  href: string;
+type WobbleButtonBase = {
   children: ReactNode;
   className?: string;
   shadow?: boolean;
   bg?: string;
   color?: string;
 };
+
+type WobbleButtonAsLink = WobbleButtonBase & {
+  href: string;
+  type?: never;
+  disabled?: never;
+};
+
+type WobbleButtonAsButton = WobbleButtonBase & {
+  href?: undefined;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
+  disabled?: boolean;
+};
+
+type WobbleButtonProps = WobbleButtonAsLink | WobbleButtonAsButton;
 
 function ButtonBgSvg() {
   return (
@@ -47,24 +60,38 @@ export function WobbleButton({
   shadow = true,
   bg = "var(--ac)",
   color = "#f0ede8",
+  type = "button",
+  disabled,
 }: WobbleButtonProps) {
   const style = {
     "--wobble-button-color-background": bg,
     "--wobble-button-color": color,
   } as CSSProperties;
 
-  return (
-    <a
-      href={href}
-      className={`wobble-button${shadow ? " has-shadow" : ""}${className ? ` ${className}` : ""}`}
-      style={style}
-    >
+  const classes = `wobble-button${shadow ? " has-shadow" : ""}${className ? ` ${className}` : ""}`;
+
+  const inner = (
+    <>
       <span className="wobble-button__bg">
         <ButtonBgSvg />
       </span>
       <span className="wobble-button__inner">
         <span className="wobble-button__text">{children}</span>
       </span>
-    </a>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a href={href} className={classes} style={style}>
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <button type={type} disabled={disabled} className={classes} style={style}>
+      {inner}
+    </button>
   );
 }

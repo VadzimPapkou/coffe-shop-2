@@ -1,3 +1,4 @@
+import { Contact } from "@/components/Contact";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Reviews } from "@/components/Reviews";
@@ -9,9 +10,10 @@ export default function Home() {
     <main className="flex-1">
       <Header />
       <Hero />
-      <Reviews />
       <WhyApocalypse />
       <Subscription />
+      <Reviews />
+      <Contact />
     </main>
   );
 }

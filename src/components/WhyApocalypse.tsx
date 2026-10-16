@@ -1,5 +1,3 @@
-import { TornEdge } from "./TornEdge";
-
 const STEPS = [
   {
     day: "Чт",
@@ -20,9 +18,7 @@ const STEPS = [
 
 export function WhyApocalypse() {
   return (
-    <section className="vp relative bg-d0 pb-20 pt-16 text-cream sm:pb-28 sm:pt-20">
-      <TornEdge fill="#141414" position="top" />
-
+    <section className="vp relative bg-[#1c1916] pb-20 pt-16 text-cream sm:pb-28 sm:pt-20">
       <div className="mx-auto max-w-[1100px] px-5 sm:px-8">
         <div className="mb-12 text-center sm:mb-16">
           <div className="section-label mb-3 justify-center">Почему Кварта</div>

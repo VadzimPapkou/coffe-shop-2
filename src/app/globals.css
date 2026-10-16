@@ -3,8 +3,9 @@
 :root {
   --cream: #f0ede8;
   --black: #090705;
-  --d0: #0d0d0d;
-  --d1: #141414;
+  --d0: #1c1916;
+  --d1: #141210;
+  --d2: #0d0d0d;
   --ac: #e06d2d;
   --ink: #1a1a1a;
   --green: #30a050;
@@ -20,6 +21,7 @@
   --color-black: var(--black);
   --color-d0: var(--d0);
   --color-d1: var(--d1);
+  --color-d2: var(--d2);
   --color-ac: var(--ac);
   --color-ink: var(--ink);
   --color-green: var(--green);

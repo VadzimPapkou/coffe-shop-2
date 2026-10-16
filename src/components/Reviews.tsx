@@ -1,3 +1,5 @@
+import { TornEdge } from "./TornEdge";
+
 const REVIEWS = [
   {
     text: "Заказала Эфиопию — правда цветочная, как писали. Привезли в пятницу, зерно ещё тёплое от обжарки. Теперь на подписке.",
@@ -66,7 +68,9 @@ export function Reviews() {
   const loop = [...REVIEWS, ...REVIEWS];
 
   return (
-    <section className="rvm relative bg-d1 pb-16 pt-10 text-cream sm:pb-20 sm:pt-14">
+    <section className="rvm relative bg-[#0d0d0d] pb-16 pt-20 text-cream sm:pb-20 sm:pt-24">
+      <TornEdge fill="#141210" position="top" />
+
       <div className="mb-8 px-5 text-center sm:mb-10 sm:px-8">
         <div className="section-label mb-3 justify-center">Отзывы</div>
         <h2 className="section-title text-[clamp(36px,4.5vw,64px)] leading-none">
