@@ -1,4 +1,4 @@
-(https://coffe-shop-2-zeta.vercel.app/)[https://coffe-shop-2-zeta.vercel.app/]
+[Деплой vercel](https://coffe-shop-2-zeta.vercel.app/)
 
 Запуск для разработки: `npm run dev`
 Запуск для прода: `npm start`
