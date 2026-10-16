@@ -56,16 +56,6 @@ const CHIPS = [
 export function Hero() {
   return (
     <section className="hero relative overflow-hidden bg-cream pb-[72px] pt-20 sm:pb-[88px] sm:pt-24">
-      {/* soft diagonal orange sweep */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(115deg, transparent 0%, transparent 38%, rgba(224,109,45,0.28) 52%, rgba(224,109,45,0.18) 68%, transparent 82%)",
-        }}
-      />
-
       <div className="relative mx-auto grid max-w-[1600px] items-center gap-10 px-5 pb-8 lg:grid-cols-2 lg:gap-6 lg:px-8 xl:px-12">
         {/* Copy */}
         <div className="relative z-10 max-w-xl pt-2 lg:pt-6">

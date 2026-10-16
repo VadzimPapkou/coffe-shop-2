@@ -18,7 +18,7 @@ const VALUES = [
   },
   {
     title: "Подписка",
-    desc: "Две пачки по 250 г раз в месяц, доставка бесплатно — 54 BYN.",
+    desc: "Две пачки по 250 г раз в месяц, доставка бесплатно.",
     icon: "/icons/certified-organic.svg",
   },
   {
@@ -46,13 +46,13 @@ export function WhyApocalypse() {
           </h2>
         </div>
 
-        <div className="vp__grid mx-auto grid max-w-[1240px] grid-cols-1 gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="vp__grid mx-auto grid max-w-[1240px] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {VALUES.map((item) => (
             <article
               key={item.title}
-              className="value-card flex flex-col items-center text-center"
+              className="value-card flex flex-col items-center gap-4 rounded-[44px] bg-[#181818] px-[26px] pb-8 pt-9 text-center"
             >
-              <div className="value-icon-wrap mb-5 flex h-[72px] items-end justify-center">
+              <div className="value-icon-wrap flex h-14 items-end justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.icon}
@@ -62,10 +62,10 @@ export function WhyApocalypse() {
                   className="h-[58px] w-auto"
                 />
               </div>
-              <h3 className="font-display mb-2.5 text-[clamp(22px,2vw,29px)] leading-none tracking-[0.03em] text-cream">
+              <h3 className="font-display text-[clamp(22px,2vw,29px)] leading-none tracking-[0.03em] text-cream">
                 {item.title}
               </h3>
-              <p className="font-mono max-w-[280px] text-[14px] leading-[1.55] text-cream/50">
+              <p className="font-mono max-w-[300px] text-[13px] leading-[1.5] text-cream/50">
                 {item.desc}
               </p>
             </article>

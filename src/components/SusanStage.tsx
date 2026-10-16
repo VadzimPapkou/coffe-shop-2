@@ -374,18 +374,30 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
           aria-label="Предыдущий"
           data-susan-prev=""
           onClick={() => spin(-1)}
-          className="absolute left-0 z-[1100] grid h-[var(--arrow)] w-[var(--arrow)] place-items-center rounded-lg bg-[#ddd7cc] text-ink transition-[background,transform] duration-[180ms] hover:bg-[#d2cbbe] active:scale-95"
+          className="absolute left-0 z-[1100] grid h-[var(--arrow)] w-[var(--arrow)] place-items-center rounded-[12.8px] bg-[#ddd7cc] text-ink transition-[background,transform] duration-[180ms] hover:bg-[#d2cbbe] active:scale-95"
           style={{
             bottom: "calc(4px + var(--bag-w) * 0.955 - var(--arrow) / 2)",
           }}
         >
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden
+            style={{ transform: "scaleX(-1)" }}
+          >
             <path
-              d="M15 6L9 12l6 6"
+              d="M14 19L21 12L14 5"
               stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              strokeMiterlimit="10"
+              strokeWidth="2"
+            />
+            <path
+              d="M21 12H2"
+              stroke="currentColor"
+              strokeMiterlimit="10"
+              strokeWidth="2"
             />
           </svg>
         </button>
@@ -394,18 +406,23 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
           aria-label="Следующий"
           data-susan-next=""
           onClick={() => spin(1)}
-          className="absolute right-0 z-[1100] grid h-[var(--arrow)] w-[var(--arrow)] place-items-center rounded-lg bg-[#ddd7cc] text-ink transition-[background,transform] duration-[180ms] hover:bg-[#d2cbbe] active:scale-95"
+          className="absolute right-0 z-[1100] grid h-[var(--arrow)] w-[var(--arrow)] place-items-center rounded-[12.8px] bg-[#ddd7cc] text-ink transition-[background,transform] duration-[180ms] hover:bg-[#d2cbbe] active:scale-95"
           style={{
             bottom: "calc(4px + var(--bag-w) * 0.955 - var(--arrow) / 2)",
           }}
         >
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
             <path
-              d="M9 6l6 6-6 6"
+              d="M14 19L21 12L14 5"
               stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              strokeMiterlimit="10"
+              strokeWidth="2"
+            />
+            <path
+              d="M21 12H2"
+              stroke="currentColor"
+              strokeMiterlimit="10"
+              strokeWidth="2"
             />
           </svg>
         </button>
