@@ -10,7 +10,7 @@ const ROASTS: SusanItem[] = [
     name: "Эфиопия Иргачеффе",
     rank: 1,
     meta: "Цветочный · Бергамот · Светлая · 250 г",
-    img: "/assets/antidote.png",
+    img: "/assets/coffee-bag-blank-hq.png",
     price: "32 BYN",
   },
   {
@@ -18,7 +18,7 @@ const ROASTS: SusanItem[] = [
     name: "Колумбия Уила",
     rank: 2,
     meta: "Карамель · Красное яблоко · 250 г",
-    img: "/assets/armageddon.png",
+    img: "/assets/coffee-bag-blank-hq.png",
     price: "29 BYN",
   },
   {
@@ -26,7 +26,7 @@ const ROASTS: SusanItem[] = [
     name: "Бразилия Серрадо",
     rank: 3,
     meta: "Орех · Шоколад · Под эспрессо · 250 г",
-    img: "/assets/the-uprising.png",
+    img: "/assets/coffee-bag-blank-hq.png",
     price: "26 BYN",
   },
   {
@@ -34,7 +34,7 @@ const ROASTS: SusanItem[] = [
     name: "Дрип-пакеты",
     rank: 4,
     meta: "Ассорти · 10 штук",
-    img: "/assets/the-wanderer.png",
+    img: "/assets/coffee-bag-blank-hq.png",
     price: "18 BYN",
   },
 ];

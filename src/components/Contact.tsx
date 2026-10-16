@@ -17,7 +17,7 @@ const CONTACTS = [
     href: "https://yandex.by/maps/?text=Минск%2C%20ул.%20Короля%2C%209",
   },
   {
-    label: "Часы",
+    label: "Самовывоз",
     value: "пн–пт 8:00–20:00 · сб–вс 10:00–18:00",
   },
   {

@@ -359,12 +359,12 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
             <Image
               src={item.img}
               alt={item.name}
-              width={340}
-              height={650}
+              height={1000}
+              width={200}
               priority={i < 3}
               draggable={false}
               className="pointer-events-none block h-auto w-full select-none"
-              sizes="300px"
+              sizes="400px"
             />
           </a>
         ))}
