@@ -10,7 +10,6 @@ export type SusanItem = {
   meta: string;
   img: string;
   price: string;
-  href?: string;
 };
 
 type DragState = {
@@ -52,7 +51,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const capRef = useRef<HTMLDivElement>(null);
-  const bagRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const bagRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const userSpinRef = useRef<(target: number) => void>(() => {});
 
   const posRef = useRef(0);
@@ -62,6 +61,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
   const holdRef = useRef(0);
   const dragRef = useRef<DragState | null>(null);
   const draggedRef = useRef(false);
+  const hoverRef = useRef(false);
   const onScreenRef = useRef(true);
   const bwRef = useRef(0);
   const xMultRef = useRef(0.55);
@@ -177,6 +177,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
       if (
         reducedRef.current ||
         dragRef.current ||
+        hoverRef.current ||
         !onScreenRef.current ||
         document.hidden ||
         Date.now() < holdRef.current ||
@@ -206,6 +207,17 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
       if (d) userSpin(base + d);
     };
 
+    const onHoverEnter = () => {
+      hoverRef.current = true;
+      clearTimeout(loopRef.current);
+    };
+    const onHoverLeave = () => {
+      hoverRef.current = false;
+      if (!dragRef.current) scheduleStep(REST);
+    };
+    root.addEventListener("pointerenter", onHoverEnter);
+    root.addEventListener("pointerleave", onHoverLeave);
+
     const clickCleanups: (() => void)[] = [];
     bagRefs.current.forEach((el, k) => {
       if (!el) return;
@@ -215,10 +227,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
           draggedRef.current = false;
           return;
         }
-        if (k !== frontRef.current) {
-          e.preventDefault();
-          goTo(k);
-        }
+        if (k !== frontRef.current) goTo(k);
       };
       el.addEventListener("click", handler);
       clickCleanups.push(() => el.removeEventListener("click", handler));
@@ -309,6 +318,8 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
       cancelAnimationFrame(rafRef.current);
       clearTimeout(loopRef.current);
       clickCleanups.forEach((fn) => fn());
+      root.removeEventListener("pointerenter", onHoverEnter);
+      root.removeEventListener("pointerleave", onHoverLeave);
       stage.removeEventListener("keydown", onKeyDown);
       stage.removeEventListener("pointerdown", onPointerDown);
       stage.removeEventListener("pointermove", onPointerMove);
@@ -341,24 +352,25 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
         tabIndex={0}
       >
         {items.map((item, i) => (
-          <a
+          <button
             key={item.id}
+            type="button"
             ref={(el) => {
               bagRefs.current[i] = el;
             }}
-            href={item.href ?? "#shop"}
-            className="susan__bag absolute bottom-1 left-1/2 block w-[var(--bag-w)] origin-[50%_100%] will-change-transform"
+            className="susan__bag absolute bottom-1 left-1/2 block w-[var(--bag-w)] origin-[50%_100%] cursor-pointer border-0 bg-transparent p-0 will-change-transform"
             data-susan-item=""
             data-name={item.name}
             data-meta={item.meta}
             data-price={item.price}
             tabIndex={-1}
+            aria-label={item.name}
             aria-hidden={i === 0 ? "false" : "true"}
             style={{ opacity: i === 0 ? 1 : 0 }}
           >
             <Image
               src={item.img}
-              alt={item.name}
+              alt=""
               height={1000}
               width={200}
               priority={i < 3}
@@ -366,7 +378,7 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
               className="pointer-events-none block h-auto w-full select-none"
               sizes="400px"
             />
-          </a>
+          </button>
         ))}
 
         <button
@@ -448,12 +460,9 @@ export function SusanStage({ items }: { items: SusanItem[] }) {
           <span className="font-mono min-w-0 truncate text-[12px] tracking-[-0.01em] text-paper-mut sm:text-[13px]">
             {active.meta}
           </span>
-          <a
-            href={active.href ?? "#shop"}
-            className="font-body inline-flex shrink-0 items-center gap-1.5 border-b border-ink pb-px text-[12px] font-medium uppercase tracking-[0.04em] text-ink sm:text-[13px]"
-          >
-            {active.price} →
-          </a>
+          <span className="font-body inline-flex shrink-0 items-center gap-1.5 text-[12px] font-medium uppercase tracking-[0.04em] text-ink sm:text-[13px]">
+            {active.price}
+          </span>
         </div>
       </div>
     </div>

@@ -3,12 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { TornEdge } from "./TornEdge";
 import { FlatButton } from "./FlatButton";
-
-const INTERESTS = [
-  { value: "subscription", label: "Подписка" },
-  { value: "order", label: "Разовый заказ" },
-  { value: "question", label: "Вопрос" },
-] as const;
+import { BY_PHONE_HINT, isByPhone } from "@/lib/phone";
 
 const CONTACTS = [
   {
@@ -29,17 +24,75 @@ const CONTACTS = [
 const fieldClass =
   "font-mono w-full rounded-[14px] border border-ink/15 bg-white px-4 py-3.5 text-[14px] leading-[1.4] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-paper-soft focus:border-ink/40 focus:shadow-[0_0_0_3px_rgba(224,109,45,0.18)]";
 
+function readUtm(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  const keys = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "utm_term",
+    "yclid",
+    "gclid",
+  ] as const;
+  const out: Record<string, string> = {};
+  for (const key of keys) {
+    const value = params.get(key);
+    if (value) out[key] = value;
+  }
+  return out;
+}
+
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">(
     "idle",
   );
 
+  function syncPhoneValidity(input: HTMLInputElement) {
+    const value = input.value.trim();
+    if (!value) {
+      input.setCustomValidity("");
+      return;
+    }
+    input.setCustomValidity(isByPhone(value) ? "" : BY_PHONE_HINT);
+  }
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const phoneInput = form.elements.namedItem("phone");
+    if (phoneInput instanceof HTMLInputElement) {
+      syncPhoneValidity(phoneInput);
+    }
+    if (!form.reportValidity()) return;
+
     setStatus("sending");
-    // API подключим отдельно — пока только UI
-    await new Promise((r) => setTimeout(r, 600));
-    setStatus("ok");
+
+    const data = new FormData(form);
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          phone: data.get("phone"),
+          comment: data.get("comment"),
+          page: window.location.href,
+          utm: readUtm(),
+        }),
+      });
+
+      if (!res.ok) {
+        setStatus("error");
+        return;
+      }
+
+      setStatus("ok");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -89,7 +142,6 @@ export function Contact() {
           <form
             onSubmit={onSubmit}
             className="relative overflow-hidden rounded-[36px] bg-cream px-7 py-9 text-ink sm:px-10 sm:py-11"
-            noValidate
           >
             <div className="flex flex-col gap-5">
               <label className="flex flex-col gap-2">
@@ -116,27 +168,12 @@ export function Contact() {
                   required
                   autoComplete="tel"
                   inputMode="tel"
-                  placeholder="+375 XX XXX-XX-XX"
+                  placeholder="+375 29 123-45-67"
+                  title={BY_PHONE_HINT}
                   className={fieldClass}
+                  onInput={(e) => syncPhoneValidity(e.currentTarget)}
+                  onBlur={(e) => syncPhoneValidity(e.currentTarget)}
                 />
-              </label>
-
-              <label className="flex flex-col gap-2">
-                <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-paper-mut">
-                  Что интересует
-                </span>
-                <select
-                  name="interest"
-                  required
-                  defaultValue="subscription"
-                  className={`${fieldClass} appearance-none bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22%3E%3Cpath d=%22M1 1.5L6 6.5L11 1.5%22 fill=%22none%22 stroke=%22%231a1a1a%22 stroke-width=%221.6%22 stroke-linecap=%22round%22/%3E%3C/svg%3E')] bg-[length:12px] bg-[right_16px_center] bg-no-repeat pr-10`}
-                >
-                  {INTERESTS.map((opt) => (
-                    <option key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
               </label>
 
               <label className="flex flex-col gap-2">
@@ -155,7 +192,7 @@ export function Contact() {
             <div className="mt-8">
               <FlatButton
                 type="submit"
-                disabled={status === "sending"}
+                loading={status === "sending"}
                 className="w-full max-w-none"
               >
                 {status === "sending" ? "Отправляем…" : "Отправить заявку"}
@@ -164,7 +201,7 @@ export function Contact() {
 
             {status === "ok" && (
               <p className="font-mono mt-5 text-[13px] leading-[1.5] text-green">
-                Заявка ушла — перезвоним в ближайшее время
+                Заявка отправлена — перезвоним в ближайшее время
               </p>
             )}
             {status === "error" && (
@@ -173,7 +210,7 @@ export function Contact() {
               </p>
             )}
             {status === "idle" && (
-              <p className="font-mono mt-5 text-[12px] leading-[1.5] text-paper-soft">
+              <p className="font-mono mt-5 text-[13px] leading-[1.5] text-paper-soft">
                 Отвечаем в рабочее время, обычно в тот же день
               </p>
             )}

@@ -52,6 +52,14 @@
   z-index: 1;
 }
 
+.flat-button__loader {
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+  margin-right: 0.55em;
+  line-height: 0;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .flat-button:hover:not(:disabled),
   .flat-button:focus-visible:not(:disabled) {

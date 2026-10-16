@@ -51,14 +51,16 @@ function Stars() {
 
 function ReviewCard({ text, author }: { text: string; author: string }) {
   return (
-    <article className="relative w-[min(460px,78vw)] shrink-0 px-10 py-[42px] pb-[38px]">
+    <article className="relative flex w-[min(460px,78vw)] shrink-0 flex-col px-10 py-[42px] pb-[38px]">
       <span className="pill-shape" style={{ background: "#f0ede8" }} />
-      <div className="relative z-10">
+      <div className="relative z-10 flex min-h-full flex-1 flex-col">
         <Stars />
         <p className="font-mono mb-6 line-clamp-6 text-[14px] leading-[1.55] text-ink">
           {text}
         </p>
-        <p className="font-display text-[18px] tracking-[0.04em] text-ink">{author}</p>
+        <p className="font-display mt-auto text-[18px] tracking-[0.04em] text-ink">
+          {author}
+        </p>
       </div>
     </article>
   );

@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
+import { Spinner } from "./Spinner";
 import "./flat-button.css";
 
 type FlatButtonBase = {
@@ -12,12 +13,14 @@ type FlatButtonAsLink = FlatButtonBase & {
   href: string;
   type?: never;
   disabled?: never;
+  loading?: never;
 };
 
 type FlatButtonAsButton = FlatButtonBase & {
   href?: undefined;
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   disabled?: boolean;
+  loading?: boolean;
 };
 
 type FlatButtonProps = FlatButtonAsLink | FlatButtonAsButton;
@@ -30,6 +33,7 @@ export function FlatButton({
   color = "#f0ede8",
   type = "button",
   disabled,
+  loading,
 }: FlatButtonProps) {
   const style = {
     "--flat-button-bg": bg,
@@ -46,8 +50,21 @@ export function FlatButton({
     );
   }
 
+  const isLoading = Boolean(loading);
+
   return (
-    <button type={type} disabled={disabled} className={classes} style={style}>
+    <button
+      type={type}
+      disabled={disabled || isLoading}
+      aria-busy={isLoading || undefined}
+      className={classes}
+      style={style}
+    >
+      {isLoading ? (
+        <span className="flat-button__loader" aria-hidden>
+          <Spinner size={18} />
+        </span>
+      ) : null}
       <span className="flat-button__text">{children}</span>
     </button>
   );
