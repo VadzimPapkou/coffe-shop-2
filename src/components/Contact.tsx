@@ -30,6 +30,8 @@ const CONTACTS = [
 const fieldClass =
   "font-mono w-full rounded-[14px] border border-ink/15 bg-white px-4 py-3.5 text-[14px] leading-[1.4] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-paper-soft focus:border-ink/40 focus:shadow-[0_0_0_3px_rgba(224,109,45,0.18)]";
 
+const FALLBACK_ERROR = "Не отправилось, попробуйте позже";
+
 function readUtm(): Record<string, string> {
   if (typeof window === "undefined") return {};
   const params = new URLSearchParams(window.location.search);
@@ -54,6 +56,7 @@ export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">(
     "idle",
   );
+  const [errorMessage, setErrorMessage] = useState(FALLBACK_ERROR);
 
   function syncPhoneValidity(input: HTMLInputElement) {
     const value = input.value.trim();
@@ -74,6 +77,7 @@ export function Contact() {
     if (!form.reportValidity()) return;
 
     setStatus("sending");
+    setErrorMessage(FALLBACK_ERROR);
 
     const data = new FormData(form);
     try {
@@ -91,6 +95,15 @@ export function Contact() {
       });
 
       if (!res.ok) {
+        const body: unknown = await res.json().catch(() => null);
+        const fromApi =
+          body &&
+          typeof body === "object" &&
+          "error" in body &&
+          typeof body.error === "string"
+            ? body.error.trim()
+            : "";
+        setErrorMessage(fromApi || FALLBACK_ERROR);
         setStatus("error");
         return;
       }
@@ -98,6 +111,7 @@ export function Contact() {
       setStatus("ok");
       form.reset();
     } catch {
+      setErrorMessage(FALLBACK_ERROR);
       setStatus("error");
     }
   }
@@ -231,7 +245,7 @@ export function Contact() {
             )}
             {status === "error" && (
               <p className="font-mono mt-5 text-[13px] leading-[1.5] text-ac">
-                Не отправилось. Позвоните или напишите ещё раз
+                {errorMessage}
               </p>
             )}
             {status === "idle" && (

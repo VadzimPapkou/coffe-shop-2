@@ -74,7 +74,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("[api/lead]", err);
     return NextResponse.json(
-      { error: "Не удалось отправить заявку. Позвоните или напишите ещё раз." },
+      { error: "Не отправилось, попробуйте позже" },
       { status: 502 },
     );
   }
