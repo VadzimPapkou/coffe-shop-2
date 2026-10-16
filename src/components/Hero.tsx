@@ -37,14 +37,6 @@ const ROASTS: SusanItem[] = [
     img: "/assets/the-wanderer.png",
     price: "18 BYN",
   },
-  {
-    id: "subscription",
-    name: "Подписка",
-    rank: 5,
-    meta: "2 × 250 г в месяц · Доставка бесплатно",
-    img: "/assets/anti-matter.png",
-    price: "54 BYN / мес",
-  },
 ];
 
 const CHIPS = [
