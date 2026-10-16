@@ -30,10 +30,32 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
 });
 
+const siteTitle = "Кварта — свежая обжарка кофе в Минске";
+const siteDescription =
+  "Маленькая обжарка на Короля, 9. Партии по 5 кг, зерно к вам на 1–3 день после обжарки. Подписка и разовый заказ.";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
+
 export const metadata: Metadata = {
-  title: "Кварта — свежая обжарка кофе в Минске",
-  description:
-    "Маленькая обжарка на Короля, 9. Партии по 5 кг, зерно к вам на 1–3 день после обжарки. Подписка и разовый заказ.",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    locale: "ru_BY",
+    siteName: "Кварта",
+    title: siteTitle,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({
