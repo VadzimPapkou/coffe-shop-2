@@ -76,13 +76,6 @@
   filter: drop-shadow(rgb(26, 26, 26) 7px 7px 0px);
 }
 
-.wobble-button.site-header-cta {
-  min-height: 52px;
-  font-size: 16px;
-  --wobble-button-padding: 0.75em 1.35em;
-  filter: drop-shadow(rgb(26, 26, 26) 4px 4px 0px);
-}
-
 @keyframes wobble-button-sprite {
   100% {
     transform: translateX(-100%);

@@ -1,5 +1,5 @@
 import { TornEdge } from "./TornEdge";
-import { WobbleButton } from "./WobbleButton";
+import { FlatButton } from "./FlatButton";
 
 const PERKS = [
   "Две пачки по 250 г каждый месяц",
@@ -55,7 +55,7 @@ export function Subscription() {
               2 × 250 г · доставка бесплатно
             </p>
             <div className="mt-8">
-              <WobbleButton href="#contact">Оформить подписку</WobbleButton>
+              <FlatButton href="#contact">Оформить подписку</FlatButton>
             </div>
             <p className="font-mono mt-5 text-[12px] leading-[1.5] text-paper-soft">
               Оставьте заявку — перезвоним и всё оформим

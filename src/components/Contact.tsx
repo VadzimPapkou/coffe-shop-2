@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { TornEdge } from "./TornEdge";
-import { WobbleButton } from "./WobbleButton";
+import { FlatButton } from "./FlatButton";
 
 const INTERESTS = [
   { value: "subscription", label: "Подписка" },
@@ -153,13 +153,13 @@ export function Contact() {
             </div>
 
             <div className="mt-8">
-              <WobbleButton
+              <FlatButton
                 type="submit"
                 disabled={status === "sending"}
                 className="w-full max-w-none"
               >
                 {status === "sending" ? "Отправляем…" : "Отправить заявку"}
-              </WobbleButton>
+              </FlatButton>
             </div>
 
             {status === "ok" && (

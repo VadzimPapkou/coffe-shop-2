@@ -1,0 +1,60 @@
+.flat-button {
+  --flat-button-color: #f0ede8;
+  --flat-button-bg: var(--ac);
+  --flat-button-focus: var(--ac);
+  --flat-button-padding: 0.95em 1.6em;
+  user-select: none;
+  color: var(--flat-button-color);
+  background: var(--flat-button-bg);
+  outline: none;
+  border: none;
+  border-radius: 999px;
+  padding: var(--flat-button-padding);
+  line-height: 1;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  min-height: 62px;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.flat-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.flat-button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: -0.125em;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flat-button:focus-visible::after {
+  box-shadow: 0 0 0 0.125em var(--flat-button-focus);
+}
+
+.flat-button__text {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flat-button:hover:not(:disabled),
+  .flat-button:focus-visible:not(:disabled) {
+    background-color: color-mix(in srgb, var(--flat-button-bg) 82%, #1a1a1a);
+  }
+}
