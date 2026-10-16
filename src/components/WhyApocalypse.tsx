@@ -1,35 +1,20 @@
 import { TornEdge } from "./TornEdge";
 
-const VALUES = [
+const STEPS = [
   {
-    title: "Партии по 5 кг",
-    desc: "Обжариваем небольшими партиями — так проще попасть в профиль и не держать зерно на складе.",
-    icon: "/icons/small-batch-roasted.svg",
+    day: "Чт",
+    title: "Жарим",
+    desc: "Партиями по 5 кг — столько, сколько нужно на неделю",
   },
   {
-    title: "1–3 дня до вас",
-    desc: "Четверг — обжарка, пятница — развоз по Минску. Свежесть — главное, что мы продаём.",
-    icon: "/icons/precision-roasted.svg",
+    day: "Пт",
+    title: "Везём",
+    desc: "По городу или самовывоз на Короля, 9",
   },
   {
-    title: "Аня и Дмитрий",
-    desc: "Основатели раньше работали бариста. С 2019 ведут мастерскую сами.",
-    icon: "/icons/family-owned.svg",
-  },
-  {
-    title: "Подписка",
-    desc: "Две пачки по 250 г раз в месяц, доставка бесплатно.",
-    icon: "/icons/certified-organic.svg",
-  },
-  {
-    title: "Доставка и самовывоз",
-    desc: "Пятница по Минску, от 50 BYN бесплатно. Или заберите на Короля, 9.",
-    icon: "/icons/eco-friendly.svg",
-  },
-  {
-    title: "Без пафоса",
-    desc: "Тёплый простой кофе для дома и офиса. Без глянца и лишних слов.",
-    icon: "/icons/fair-trade.svg",
+    day: "Сб–Пн",
+    title: "Пьёте",
+    desc: "Зерно у вас через 1‑3 дня после обжарки",
   },
 ];
 
@@ -38,38 +23,57 @@ export function WhyApocalypse() {
     <section className="vp relative bg-d0 pb-20 pt-16 text-cream sm:pb-28 sm:pt-20">
       <TornEdge fill="#141414" position="top" />
 
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-8">
+      <div className="mx-auto max-w-[1100px] px-5 sm:px-8">
         <div className="mb-12 text-center sm:mb-16">
-          <div className="section-label justify-center mb-3">Почему Кварта</div>
-          <h2 className="section-title text-[clamp(40px,4.8vw,72px)] leading-none">
-            Что важно знать
+          <div className="section-label mb-3 justify-center">Почему Кварта</div>
+          <h2 className="section-title text-[clamp(36px,4.8vw,64px)] leading-[1.05]">
+            Свежий кофе{" "}
+            просто вкуснее
           </h2>
+          <p className="font-mono mx-auto mt-5 max-w-[420px] text-[14px] leading-[1.6] text-cream/45">
+            Обжариваем в четверг, в пятницу <br /> развозим по Минску.
+          </p>
         </div>
 
-        <div className="vp__grid mx-auto grid max-w-[1240px] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {VALUES.map((item) => (
-            <article
-              key={item.title}
-              className="value-card flex flex-col items-center gap-4 rounded-[44px] bg-[#181818] px-[26px] pb-8 pt-9 text-center"
-            >
-              <div className="value-icon-wrap flex h-14 items-end justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.icon}
-                  alt=""
-                  width={56}
-                  height={58}
-                  className="h-[58px] w-auto"
-                />
-              </div>
-              <h3 className="font-display text-[clamp(22px,2vw,29px)] leading-none tracking-[0.03em] text-cream">
-                {item.title}
-              </h3>
-              <p className="font-mono max-w-[300px] text-[13px] leading-[1.5] text-cream/50">
-                {item.desc}
-              </p>
-            </article>
-          ))}
+        {/* Horizontal connected process — sparse steps, thin rail, soft dots */}
+        <div className="relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-[16.6%] right-[16.6%] top-[11px] z-0 hidden h-px bg-cream/15 md:block"
+          />
+
+          <ol className="relative z-10 m-0 grid list-none gap-10 p-0 md:grid-cols-3 md:gap-6">
+            {STEPS.map((step, i) => (
+              <li
+                key={step.day}
+                className="relative flex gap-4 md:flex-col md:items-center md:text-center"
+              >
+                {i < STEPS.length - 1 && (
+                  <span
+                    aria-hidden
+                    className="absolute left-[10px] top-[28px] h-[calc(100%+12px)] w-px bg-cream/15 md:hidden"
+                  />
+                )}
+
+                <span className="relative z-10 flex h-[22px] w-[22px] shrink-0 items-center justify-center">
+                  <span className="absolute inset-0 rounded-full bg-ac/20" />
+                  <span className="relative h-2.5 w-2.5 rounded-full bg-ac" />
+                </span>
+
+                <div className="min-w-0 flex-1 pt-0.5 md:pt-5">
+                  <p className="font-script mb-1 text-[28px] leading-none text-ac md:text-[32px]">
+                    {step.day}
+                  </p>
+                  <h3 className="font-display mb-2 text-[22px] tracking-[0.04em] text-cream md:text-[26px]">
+                    {step.title}
+                  </h3>
+                  <p className="font-mono max-w-[280px] text-[13px] leading-[1.55] text-cream/45 md:mx-auto text-balance">
+                    {step.desc}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
