@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Reviews } from "@/components/Reviews";
 import { Subscription } from "@/components/Subscription";
-import { WhyApocalypse } from "@/components/WhyApocalypse";
+import { WhyApocalypse } from "@/components/Why";
 
 export default function Home() {
   return (

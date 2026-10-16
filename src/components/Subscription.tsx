@@ -55,7 +55,7 @@ export function Subscription() {
               2 × 250 г · доставка бесплатно
             </p>
             <div className="mt-8">
-              <FlatButton href="#contact" className="w-full">
+              <FlatButton href="#contact" className="w-full p-2">
                 Оформить подписку
               </FlatButton>
             </div>

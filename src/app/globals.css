@@ -40,7 +40,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -48,6 +48,7 @@ body {
   color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;
   margin: 0;
+  overflow-x: clip;
 }
 
 .hard-shadow {
@@ -174,25 +175,25 @@ body {
     center / 100% 100% no-repeat;
 }
 
-/* Torn edge — from apocalypsecoffee.com */
+/* Torn edge — no horizontal bleed (would expand scrollWidth) */
 .torn-edge {
   position: absolute;
-  left: -1px;
-  width: calc(100% + 2px);
+  left: 0;
+  width: 100%;
   height: 104px;
   z-index: 4;
   display: block;
   pointer-events: none;
-  overflow: visible;
+  overflow: hidden;
   line-height: 0;
 }
 
 .torn-edge--bottom {
-  bottom: -1px;
+  bottom: 0;
 }
 
 .torn-edge--top {
-  top: -1px;
+  top: 0;
 }
 
 @media (max-width: 767px) {
